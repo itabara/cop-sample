@@ -1,0 +1,2 @@
+#!/bin/bash
+docker push docker.123-dev.co.uk/cop/nodejs:latest

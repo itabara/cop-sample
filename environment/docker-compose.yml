@@ -1,0 +1,19 @@
+mongo_data:
+  image: busybox
+  volumes:
+    - /data/db
+mongo:
+  image: mongo:latest
+  #image: docker.123-dev.co.uk/cop/mongo:latest
+  volumes_from:
+    - mongo_data
+  ports:
+    - 27017:27017
+cop-backend-api:
+  image: docker.123-dev.co.uk/cop/nodejs:latest
+  ports:
+    - 9000:3000
+  environment:
+    NODE_ENV: development
+  links:
+    - mongo

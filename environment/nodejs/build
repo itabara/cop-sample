@@ -1,0 +1,2 @@
+#!/bin/bash
+docker build -t docker.123-dev.co.uk/cop/nodejs:latest -f ./Dockerfile .

@@ -1,0 +1,17 @@
+FROM alpine:3.3
+
+# Update
+RUN apk add --update bash
+RUN apk add --update nodejs
+RUN apk add --update git
+
+# Install app dependencies
+COPY src/package.json /src/cop-api/package.json
+RUN cd /src/cop-api/ ; npm install
+
+# Bundle app source
+COPY src/. /src/cop-api/
+
+EXPOSE 3000
+
+CMD ["node", "/src/cop-api/app.js"]
