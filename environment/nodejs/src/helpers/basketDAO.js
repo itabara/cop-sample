@@ -12,3 +12,18 @@ exports.addBasket = function(basket, callback){
     callback(err, result);
   });
 };
+
+exports.getBasket = function(filter, callback){
+  var db = dbUtils.db();
+  var collection = db.collection('basket');
+
+  console.log('The filter: ', filter);
+  // let's retrieve by filter
+  collection.find(filter).toArray(function(err, result){
+    if (err){
+      console.log('Error: ', err);
+    }
+    console.log('Retrieved: ', result);
+    callback(err, result);
+  });
+}

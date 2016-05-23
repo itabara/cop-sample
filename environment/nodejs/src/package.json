@@ -4,8 +4,8 @@
   "description": "HEG COP sample node js testing configuration",
   "main": "app.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "test-server": "NODE_ENV=test ./node-modules/.bin/mocha -R dot ./test/api/",
+    "test": "npm run test-server",
+    "test-server": "NODE_ENV=test ./node_modules/.bin/mocha --reporter dot --recursive ./test/api",
     "start": "node app.js",
     "start-prod": "NODE_ENV=production node app.js"
   },
@@ -13,13 +13,16 @@
   "license": "ISC",
   "dependencies": {
     "body-parser": "^1.15.1",
+    "chai": "^3.5.0",
     "compression": "^1.6.2",
     "cookie-parser": "^1.4.2",
     "errorhandler": "^1.4.3",
     "express": "^4.13.3",
     "method-override": "^2.3.6",
+    "mocha": "^2.5.1",
     "mongodb": "^2.1.19",
     "passport": "^0.3.2",
-    "password": "^0.1.1"
+    "password": "^0.1.1",
+    "supertest": "^1.2.0"
   }
 }

@@ -1,9 +1,36 @@
-var assert = require('chai').assert;
-describe('BasketDAO', function() {
-  describe('#addBasket()', function () {
-    it('should return -1 when the value is not present', function () {
-      assert.equal(-1, [1,2,3].indexOf(5));
-      assert.equal(-1, [1,2,3].indexOf(0));
-    });
+'use strict';
+
+var request = require('supertest');
+var expect = require('chai').expect;
+
+var app = require('../../app');
+
+describe('POST /api/basket', function() {
+  it('should return {ok=1} when inserting a new basket', function (done) {
+    request(app)
+      .post('/api/basket')
+      .send({refNumber:'123', productName:'Office 365'})
+      .expect(201)
+      .expect('Content-Type', /json/)
+      .end(function(err, res){
+        if (err)
+          return done(err);
+        done();
+      });
+  });
+});
+
+describe('GET /api/basket/123', function() {
+  it('should return {refNumber=123} when filtering for basket', function (done) {
+    request(app)
+      .get('/api/basket')
+      .send({refNumber:'123'})
+      .expect(200)
+      .expect('Content-Type', /json/)
+      .end(function(err, res){
+        if (err)
+          return done(err);
+        done();
+      });
   });
 });
