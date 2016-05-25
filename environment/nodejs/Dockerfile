@@ -6,12 +6,13 @@ RUN apk add --update nodejs
 RUN apk add --update git
 
 # Install app dependencies
-COPY src/package.json /src/cop-api/package.json
+COPY /src/package.json /src/cop-api/package.json
 RUN cd /src/cop-api/ ; npm install
 
 # Bundle app source
-COPY src/. /src/cop-api/
+COPY /src/. /src/cop-api
+WORKDIR "/src/cop-api"
 
-EXPOSE 3000
+EXPOSE 3000 9000 8080
 
-CMD ["node", "/src/cop-api/app.js"]
+CMD ["npm", "start"]

@@ -1,7 +1,7 @@
 {
-  "name": "heg-cop-sample",
+  "name": "cop-sample",
   "version": "1.0.0",
-  "description": "HEG COP sample node js testing configuration",
+  "description": "COP sample node.js testing configuration",
   "main": "app.js",
   "scripts": {
     "test": "npm run test-server",
@@ -9,7 +9,7 @@
     "start": "node app.js",
     "start-prod": "NODE_ENV=production node app.js"
   },
-  "author": "HEG",
+  "author": "iulian.tabara@gmail.com",
   "license": "ISC",
   "dependencies": {
     "body-parser": "^1.15.1",
@@ -22,7 +22,6 @@
     "mocha": "^2.5.1",
     "mongodb": "^2.1.19",
     "passport": "^0.3.2",
-    "password": "^0.1.1",
     "supertest": "^1.2.0"
   }
 }

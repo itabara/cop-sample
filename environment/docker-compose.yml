@@ -3,8 +3,7 @@ mongo_data:
   volumes:
     - /data/db
 mongo:
-  image: mongo:latest
-  #image: docker.123-dev.co.uk/cop/mongo:latest
+  image: docker.123-dev.co.uk/cop/mongo:latest
   volumes_from:
     - mongo_data
   ports:
@@ -12,8 +11,12 @@ mongo:
 cop-backend-api:
   image: docker.123-dev.co.uk/cop/nodejs:latest
   ports:
-    - 9000:3000
+    - 3000:3000 # development
+    - 9000:9000 # test
+    - 8080:8080 # production
   environment:
-    NODE_ENV: development
+    #NODE_ENV: Development
+    #NODE_ENV: Production
+    NODE_ENV: Test
   links:
     - mongo

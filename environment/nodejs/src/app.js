@@ -6,8 +6,6 @@ var express = require('express');
 var config = require('./config/environment');
 var os = require('os');
 
-var hostname = os.hostname();
-
 // Setup server
 var app = express();
 var server = require('http').createServer(app);
@@ -20,9 +18,11 @@ require('./config/express')(app);
 // Route configuration
 require('./routes')(app);
 
+var hostname = os.hostname();
+
 // Start the server
-server.listen(config.port, config.ip, function(){
-  console.log('COP-API server running on http://%s:%d, in %s mode', config.ip, config.port, app.get('env'));
+server.listen(config.port, hostname, function(){
+  console.log('COP-API server running on http://%s:%d, in %s mode', hostname, config.port, app.get('env'));
 });
 
 exports = module.exports = app;
