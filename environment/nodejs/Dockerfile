@@ -2,7 +2,7 @@ FROM alpine:3.3
 
 # Update
 RUN apk add --update bash
-RUN apk add --update nodejs
+RUN apk add nodejs>6.2.0-r0
 RUN apk add --update git
 
 # Install app dependencies

@@ -15,7 +15,7 @@ cop-backend-api:
     - 9000:9000 # test
     - 8080:8080 # production
   environment:
-    NODE_ENV: Development
+    NODE_ENV: development
     #NODE_ENV: Production
     #NODE_ENV: Test
   links:
